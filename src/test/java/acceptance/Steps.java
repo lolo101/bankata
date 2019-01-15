@@ -2,6 +2,9 @@ package acceptance;
 
 import static org.junit.Assert.assertThat;
 
+import bankata.Account;
+import bankata.Amount;
+import bankata.Deposit;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Date;
@@ -13,13 +16,17 @@ import org.jbehave.core.annotations.When;
 public class Steps {
 
     private final Appendable printer = new StringWriter();
+    private final Account account = new Account();
 
     @Given("a client makes a deposit of $value on $date")
     public void givenAClientMakesADepositOf(int amount, Date date) {
+        givenADepositOf(amount, date);
     }
 
     @Given("a deposit of $value on $date")
     public void givenADepositOf(int amount, Date date) {
+        Deposit deposit = new Deposit(date, new Amount(amount));
+        account.deposit(deposit);
     }
 
     @Given("a withdrawal of $value on $date")
