@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 import bankata.Account;
 import bankata.Amount;
 import bankata.Deposit;
+import bankata.Withdrawal;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Date;
@@ -26,11 +27,13 @@ public class Steps {
     @Given("a deposit of $value on $date")
     public void givenADepositOf(int amount, Date date) {
         Deposit deposit = new Deposit(date, new Amount(amount));
-        account.deposit(deposit);
+        account.operation(deposit);
     }
 
     @Given("a withdrawal of $value on $date")
     public void givenAWithdrawalOf(int amount, Date date) {
+        Withdrawal withdrawal = new Withdrawal(date, new Amount(amount));
+        account.operation(withdrawal);
     }
 
     @When("she prints her bank statement")

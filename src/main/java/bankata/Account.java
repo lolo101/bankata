@@ -2,6 +2,6 @@ package bankata;
 
 public class Account {
 
-    public void deposit(Deposit deposit) {
+    public void operation(Operation deposit) {
     }
 }
