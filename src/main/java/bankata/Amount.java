@@ -11,4 +11,16 @@ public class Amount {
         this.value = value;
     }
 
+    public Amount plus(Amount amount) {
+        return new Amount(value + amount.value);
+    }
+
+    public Amount minus(Amount amount) {
+        return new Amount(value - amount.value);
+    }
+
+    @Override
+    public String toString() {
+        return value + ".00";
+    }
 }

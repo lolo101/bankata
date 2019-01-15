@@ -6,6 +6,7 @@ import bankata.Account;
 import bankata.Amount;
 import bankata.Deposit;
 import bankata.Withdrawal;
+import bankata.statement.Statement;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Date;
@@ -38,6 +39,8 @@ public class Steps {
 
     @When("she prints her bank statement")
     public void whenSheChecksHerBankStatement() throws IOException {
+        Statement statement = new Statement(account.stream());
+        printer.append(statement.toString());
     }
 
     @Then("she would see $statement")
